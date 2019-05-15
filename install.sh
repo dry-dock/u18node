@@ -26,6 +26,10 @@ python2.7-dev
 pip install -q virtualenv==16.5.0
 pip install -q pyOpenSSL==19.0.0
 
+export JQ_VERSION=1.5*
+echo "================= Adding JQ $JQ_VERSION =========================="
+apt-get install -y -q jq="$JQ_VERSION"
+
 echo "================= Installing CLIs packages ======================"
 
 export GIT_VERSION=1:2.*
