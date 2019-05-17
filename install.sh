@@ -8,7 +8,7 @@ software-properties-common \
 wget \
 curl \
 openssh-client \
-vsftpd \
+ftp \
 smbclient
 
 export NVM_VERSION=v0.33.9
