@@ -9,6 +9,7 @@ wget \
 curl \
 openssh-client \
 ftp \
+gettext \
 smbclient
 
 export NVM_VERSION=v0.33.9
