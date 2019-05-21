@@ -1,5 +1,11 @@
 #!/bin/bash -e
 
+echo "================= Adding some global settings ==================="
+mkdir -p "$HOME/.ssh/"
+mv /u18node/config "$HOME/.ssh/"
+mv /u18node/90forceyes /etc/apt/apt.conf.d/
+touch "$HOME/.ssh/known_hosts"
+
 echo "================= Installing basic packages ================"
 apt-get update
 apt-get install -y \
