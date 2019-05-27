@@ -19,7 +19,7 @@ ftp \
 gettext \
 smbclient
 
-export NVM_VERSION=v0.33.9
+export NVM_VERSION=v0.34.0
 echo "================= Installing NVM "$NVM_VERSION" ================"
 curl -sS https://raw.githubusercontent.com/creationix/nvm/"$NVM_VERSION"/install.sh | bash
 
