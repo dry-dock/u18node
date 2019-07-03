@@ -50,18 +50,18 @@ add-apt-repository ppa:git-core/ppa -y
 apt-get update -qq
 apt-get install -y -q git="$GIT_VERSION"
 
-export CLOUD_SDKREPO=245.0*
+export CLOUD_SDKREPO=253.0*
 echo "================= Adding gcloud $CLOUD_SDK_REPO =================="
 CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
 echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 sudo apt-get update && sudo apt-get -y install google-cloud-sdk="$CLOUD_SDKREPO"
 
-export AWS_VERSION=1.16.156
+export AWS_VERSION=1.16.192
 echo "================= Adding awscli $AWS_VERSION ===================="
 sudo pip install awscli=="$AWS_VERSION"
 
-export AWSEBCLI_VERSION=3.15.0
+export AWSEBCLI_VERSION=3.15.2
 echo "================= Adding awsebcli $AWSEBCLI_VERSION =============="
 sudo pip install awsebcli=="$AWSEBCLI_VERSION"
 
@@ -73,11 +73,17 @@ curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 sudo apt-get install -q apt-transport-https
 sudo apt-get update && sudo apt-get install -y -q azure-cli=$AZURE_CLI_VERSION
 
-JFROG_VERSION=1.25.0
+JFROG_VERSION=1.26.1
 echo "================= Adding jfrog-cli $JFROG_VERSION  ================"
 wget -nv https://api.bintray.com/content/jfrog/jfrog-cli-go/"$JFROG_VERSION"/jfrog-cli-linux-amd64/jfrog?bt_package=jfrog-cli-linux-amd64 -O jfrog
 sudo chmod +x jfrog
 mv jfrog /usr/bin/jfrog
+
+KUBECTL_VERSION=1.15.0
+echo "================= Adding kubectl $KUBECTL_VERSION ======================================"
+curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v"$KUBECTL_VERSION"/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
 
 
 for file in /u18node/version/*; do
