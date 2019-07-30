@@ -85,6 +85,16 @@ curl -sSLO https://storage.googleapis.com/kubernetes-release/release/v"$KUBECTL_
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
+HELM_VERSION=2.14.2
+echo "================= Adding helm cli $HELM_VERSION ======================================"
+curl -sSL -o helm.tar.gz https://get.helm.sh/helm-v"$HELM_VERSION"-linux-amd64.tar.gz
+tar xzvf helm.tar.gz
+chmod +x ./linux-amd64/helm
+chmod +x ./linux-amd64/tiller
+sudo mv ./linux-amd64/helm /usr/local/bin/helm
+sudo mv ./linux-amd64/tiller /usr/local/bin/tiller
+rm -fr ./linux-amd64
+rm -f helm.tar.gz
 
 for file in /u18node/version/*; do
   $file
